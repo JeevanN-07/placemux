@@ -1,0 +1,6 @@
+student_id,score,passed,submission_date,grade
+1,85,Yes,2026-07-01,A
+2,42,No,2026-07-02,F
+3,90,Yes,2026-07-02,A
+4,65,Yes,2026-07-04,C
+5,50,No,2026-07-05,C
