@@ -1,12 +1,12 @@
 # Task 10: Comparative Insights Report
 
 ## 1. Segment Breakdown & Contribution Analysis
-* **High Cohort (>=70):** 2 Students (40% of size) | Avg Score: 87.5 | Pass Rate: 100% | Total Score Contribution: 52.7%
-* **Low Cohort (<70):** 3 Students (60% of size) | Avg Score: 52.3 | Pass Rate: 33.3% | Total Score Contribution: 47.3%
+* **High Cohort (>=70):** 56 Students (48.7% of size) | Avg Score: 86.2 | Total Score Contribution: 62.0%
+* **Low Cohort (<70):** 59 Students (51.3% of size) | Avg Score: 50.2 | Total Score Contribution: 38.0%
 
 ---
 
 ## 2. Key Findings & Segment Attribution
-* **Driving Segment:** The Low Cohort (<70) is driving the overall average down to 66.4 due to a 33.3% pass rate gap.
-* **Simpson's Paradox Check:** Sub-group trends align with aggregated metrics; no reversing hidden variables detected across submission dates.
-* **Size Normalization:** Normalized by group size to ensure raw total counts do not skew performance evaluation.
+* **Driving Segment:** The Low Cohort (<70) comprises 51.3% of the evaluation pool, pulling the overall benchmark down to 67.7.
+* **Simpson's Paradox Audit:** Sub-group evaluation across Period 1 vs Period 2 confirms sub-trends match aggregate performance (no reversing hidden variables).
+* **Size Normalization:** Metrics normalized by cohort population percentage to prevent raw totals from skewing attribution.
