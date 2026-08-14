@@ -1,0 +1,151 @@
+customer_id,Recency,Frequency,Monetary,R_Score,F_Score,M_Score,RFM_Score,Segment
+CUST_001,5,13,1504.67,4,4,4,444,Champions
+CUST_002,5,5,1217.78,4,1,4,414,Recent / Promising
+CUST_003,4,7,450.13,4,3,1,431,Loyal Customers
+CUST_004,4,6,844.35,4,2,3,423,Loyal Customers
+CUST_005,35,10,993.94,2,4,3,243,Hibernating / Churned
+CUST_006,23,6,549.0,3,2,2,322,Loyal Customers
+CUST_007,77,3,553.5,1,1,2,112,Hibernating / Churned
+CUST_008,2,9,1188.17,4,4,4,444,Champions
+CUST_009,6,6,1002.4100000000001,4,2,3,423,Loyal Customers
+CUST_010,159,4,345.24,1,1,1,111,Hibernating / Churned
+CUST_011,10,5,601.86,4,1,2,412,Recent / Promising
+CUST_012,39,8,1242.9,2,3,4,234,Hibernating / Churned
+CUST_013,6,6,1114.71,4,2,3,423,Loyal Customers
+CUST_014,5,7,893.0600000000001,4,3,3,433,Champions
+CUST_015,6,9,809.83,4,4,3,443,Champions
+CUST_016,84,3,377.46000000000004,1,1,1,111,Hibernating / Churned
+CUST_017,4,7,766.78,4,3,2,432,Loyal Customers
+CUST_018,58,3,1258.89,1,1,4,114,Hibernating / Churned
+CUST_019,24,5,662.82,3,1,2,312,Recent / Promising
+CUST_020,143,3,102.28,1,1,1,111,Hibernating / Churned
+CUST_021,2,8,1283.8999999999999,4,3,4,434,Champions
+CUST_022,106,4,329.64,1,1,1,111,Hibernating / Churned
+CUST_023,50,6,558.14,2,2,2,222,Hibernating / Churned
+CUST_024,4,5,921.35,4,1,3,413,Recent / Promising
+CUST_025,51,7,409.92,2,3,1,231,Hibernating / Churned
+CUST_026,40,7,780.34,2,3,2,232,Hibernating / Churned
+CUST_027,4,7,1267.23,4,3,4,434,Champions
+CUST_028,19,9,1341.25,3,4,4,344,Champions
+CUST_029,10,8,1016.6600000000001,4,3,3,433,Champions
+CUST_030,12,7,638.94,3,3,2,332,Loyal Customers
+CUST_031,104,2,136.34,1,1,1,111,Hibernating / Churned
+CUST_032,39,5,500.96,2,1,1,211,Hibernating / Churned
+CUST_033,39,10,1070.31,2,4,3,243,Hibernating / Churned
+CUST_034,5,6,614.41,4,2,2,422,Loyal Customers
+CUST_035,6,8,1256.84,4,3,4,434,Champions
+CUST_036,39,7,690.81,2,3,2,232,Hibernating / Churned
+CUST_037,26,6,987.8499999999999,3,2,3,323,Loyal Customers
+CUST_038,37,11,1723.5900000000001,2,4,4,244,Hibernating / Churned
+CUST_039,36,10,1214.87,2,4,4,244,Hibernating / Churned
+CUST_040,62,5,492.34,1,1,1,111,Hibernating / Churned
+CUST_041,51,4,649.0,2,1,2,212,Hibernating / Churned
+CUST_042,69,6,348.17,1,2,1,121,Hibernating / Churned
+CUST_043,60,4,486.76,1,1,1,111,Hibernating / Churned
+CUST_044,68,6,682.8399999999999,1,2,2,122,Hibernating / Churned
+CUST_045,28,4,404.9,3,1,1,311,Recent / Promising
+CUST_046,73,7,1089.37,1,3,3,133,At-Risk / Need Attention
+CUST_047,5,12,961.75,4,4,3,443,Champions
+CUST_048,13,8,991.98,3,3,3,333,Champions
+CUST_049,3,7,475.52,4,3,1,431,Loyal Customers
+CUST_050,135,4,394.46,1,1,1,111,Hibernating / Churned
+CUST_051,28,9,1313.01,3,4,4,344,Champions
+CUST_052,40,6,553.5600000000001,2,2,2,222,Hibernating / Churned
+CUST_053,62,10,1064.06,1,4,3,143,At-Risk / Need Attention
+CUST_054,65,9,1400.99,1,4,4,144,At-Risk / Need Attention
+CUST_055,15,5,427.86,3,1,1,311,Recent / Promising
+CUST_056,8,5,848.1,4,2,3,423,Loyal Customers
+CUST_057,22,5,864.53,3,2,3,323,Loyal Customers
+CUST_058,67,9,966.34,1,4,3,143,At-Risk / Need Attention
+CUST_059,77,4,529.79,1,1,1,111,Hibernating / Churned
+CUST_060,3,8,920.0600000000001,4,3,3,433,Champions
+CUST_061,27,6,838.0,3,2,3,323,Loyal Customers
+CUST_062,5,11,1114.88,4,4,4,444,Champions
+CUST_063,17,12,1728.38,3,4,4,344,Champions
+CUST_064,16,5,302.90999999999997,3,2,1,321,Loyal Customers
+CUST_065,80,6,883.1500000000001,1,2,3,123,Hibernating / Churned
+CUST_066,32,5,504.29999999999995,2,2,1,221,Hibernating / Churned
+CUST_067,65,5,476.88,1,2,1,121,Hibernating / Churned
+CUST_068,73,6,647.74,1,2,2,122,Hibernating / Churned
+CUST_069,29,9,998.52,3,4,3,343,Champions
+CUST_070,46,6,1263.14,2,2,4,224,Hibernating / Churned
+CUST_071,18,4,577.81,3,1,2,312,Recent / Promising
+CUST_072,7,6,653.61,4,2,2,422,Loyal Customers
+CUST_073,54,3,254.95999999999998,2,1,1,211,Hibernating / Churned
+CUST_074,2,6,982.9000000000001,4,2,3,423,Loyal Customers
+CUST_075,56,9,1066.37,1,4,3,143,At-Risk / Need Attention
+CUST_076,11,5,648.3,3,2,2,322,Loyal Customers
+CUST_077,213,1,34.6,1,1,1,111,Hibernating / Churned
+CUST_078,14,5,648.71,3,2,2,322,Loyal Customers
+CUST_079,19,4,579.15,3,1,2,312,Recent / Promising
+CUST_080,21,3,697.74,3,1,2,312,Recent / Promising
+CUST_081,30,7,1423.89,2,3,4,234,Hibernating / Churned
+CUST_082,5,5,507.87,4,2,1,421,Loyal Customers
+CUST_083,22,5,483.68,3,2,1,321,Loyal Customers
+CUST_084,38,8,502.47999999999996,2,3,1,231,Hibernating / Churned
+CUST_085,9,4,1229.59,4,1,4,414,Recent / Promising
+CUST_086,12,11,1203.42,3,4,4,344,Champions
+CUST_087,215,1,164.63,1,1,1,111,Hibernating / Churned
+CUST_088,61,4,355.71000000000004,1,1,1,111,Hibernating / Churned
+CUST_089,38,6,1568.63,2,2,4,224,Hibernating / Churned
+CUST_090,23,14,1503.73,3,4,4,344,Champions
+CUST_091,46,3,67.77,2,1,1,211,Hibernating / Churned
+CUST_092,11,9,1587.54,3,4,4,344,Champions
+CUST_093,28,8,887.28,3,3,3,333,Champions
+CUST_094,44,7,1021.74,2,3,3,233,Hibernating / Churned
+CUST_095,76,9,574.56,1,4,2,142,At-Risk / Need Attention
+CUST_096,12,8,1653.9499999999998,3,3,4,334,Champions
+CUST_097,34,5,1251.34,2,2,4,224,Hibernating / Churned
+CUST_098,6,4,418.4,4,1,1,411,Recent / Promising
+CUST_099,7,13,2613.07,4,4,4,444,Champions
+CUST_100,52,6,990.4200000000001,2,2,3,223,Hibernating / Churned
+CUST_101,66,10,601.05,1,4,2,142,At-Risk / Need Attention
+CUST_102,88,2,571.03,1,1,2,112,Hibernating / Churned
+CUST_103,55,6,591.22,2,2,2,222,Hibernating / Churned
+CUST_104,5,15,1833.56,4,4,4,444,Champions
+CUST_105,11,6,637.5,3,3,2,332,Loyal Customers
+CUST_106,80,4,277.84999999999997,1,1,1,111,Hibernating / Churned
+CUST_107,39,4,411.93,2,1,1,211,Hibernating / Churned
+CUST_108,113,5,835.2,1,2,3,123,Hibernating / Churned
+CUST_109,11,9,687.13,3,4,2,342,Loyal Customers
+CUST_110,48,3,386.59000000000003,2,1,1,211,Hibernating / Churned
+CUST_111,12,11,1496.0900000000001,3,4,4,344,Champions
+CUST_112,105,5,538.36,1,2,2,122,Hibernating / Churned
+CUST_113,14,14,1657.22,3,4,4,344,Champions
+CUST_114,155,4,467.03999999999996,1,1,1,111,Hibernating / Churned
+CUST_115,59,9,838.64,1,4,3,143,At-Risk / Need Attention
+CUST_116,14,5,595.74,3,2,2,322,Loyal Customers
+CUST_117,20,10,1110.54,3,4,3,343,Champions
+CUST_118,51,11,882.0,2,4,3,243,Hibernating / Churned
+CUST_119,48,3,196.60000000000002,2,1,1,211,Hibernating / Churned
+CUST_120,10,5,1095.49,4,2,3,423,Loyal Customers
+CUST_121,33,4,795.5600000000001,2,1,2,212,Hibernating / Churned
+CUST_122,3,7,1382.9,4,3,4,434,Champions
+CUST_123,11,7,779.75,3,3,2,332,Loyal Customers
+CUST_124,9,6,1030.3,4,3,3,433,Champions
+CUST_125,75,2,221.07,1,1,1,111,Hibernating / Churned
+CUST_126,39,7,657.72,2,3,2,232,Hibernating / Churned
+CUST_127,6,5,341.96,4,2,1,421,Loyal Customers
+CUST_128,55,9,1101.4,2,4,3,243,Hibernating / Churned
+CUST_129,63,8,786.23,1,3,2,132,At-Risk / Need Attention
+CUST_130,20,12,2350.68,3,4,4,344,Champions
+CUST_131,7,7,615.9,4,3,2,432,Loyal Customers
+CUST_132,7,8,782.95,4,3,2,432,Loyal Customers
+CUST_133,79,7,757.3000000000001,1,3,2,132,At-Risk / Need Attention
+CUST_134,17,8,589.86,3,4,2,342,Loyal Customers
+CUST_135,30,7,877.9399999999999,2,3,3,233,Hibernating / Churned
+CUST_136,38,7,860.82,2,3,3,233,Hibernating / Churned
+CUST_137,52,9,1273.79,2,4,4,244,Hibernating / Churned
+CUST_138,103,5,818.25,1,2,3,123,Hibernating / Churned
+CUST_139,39,3,321.83,2,1,1,211,Hibernating / Churned
+CUST_140,85,7,1492.8,1,3,4,134,At-Risk / Need Attention
+CUST_141,5,8,1197.8700000000001,4,4,4,444,Champions
+CUST_142,56,6,1275.58,1,3,4,134,At-Risk / Need Attention
+CUST_143,3,6,1023.06,4,3,3,433,Champions
+CUST_144,29,10,1292.1299999999999,3,4,4,344,Champions
+CUST_145,7,11,1654.44,4,4,4,444,Champions
+CUST_146,25,7,428.66,3,3,1,331,Loyal Customers
+CUST_147,6,10,1150.3300000000002,4,4,4,444,Champions
+CUST_148,29,7,1153.53,3,3,4,334,Champions
+CUST_149,47,5,805.5,2,2,2,222,Hibernating / Churned
+CUST_150,13,5,491.72,3,2,1,321,Loyal Customers
