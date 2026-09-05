@@ -3,65 +3,60 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-# Page Config
-st.set_page_config(page_title="Phase 1 Analytics Capstone", layout="wide")
+st.set_page_config(page_title="DA-02: Root-Cause Diagnostic Engine", layout="wide")
 
-st.title("Phase 1 Executive Analytics Capstone Dashboard")
-st.caption("Data Analyst Phase 1 Immersion | Author: Jeevan N | Freshness: Live Automated Refresh")
+st.title("🚨 Application Funnel & Root-Cause Diagnostic Engine")
+st.subheader("Identifying Silent Failures vs. User Friction")
 
-# Data Engine Load
-@st.cache_data
-def load_data():
-    np.random.seed(42)
-    dates = pd.date_range("2026-01-01", "2026-08-14", freq="D")
-    data = []
-    regions = ["North America", "Europe", "Asia-Pacific", "Latin America"]
-    segments = ["Champions", "Loyal Customers", "At-Risk", "Recent"]
-    
-    for d in dates:
-        for r in regions:
-            sales = np.random.normal(loc=1200, scale=300)
-            orders = np.random.randint(10, 50)
-            segment = np.random.choice(segments)
-            data.append([d, r, segment, max(sales, 200), orders])
-            
-    return pd.DataFrame(data, columns=["Date", "Region", "Customer_Segment", "Revenue", "Orders"])
+# Mock Dataset Generation representing mixed causes
+data = {
+    'Stage': ['1. Job Description View', '2. Profile & Form Fill', '3. Document Upload', '4. Final Submission'],
+    'Users Started': [1000, 750, 680, 200],
+    'Users Completed': [750, 680, 200, 180],
+    'Primary Root Cause': ['Trust / Scam Perception', 'Form Length Friction', 'Silent Technical Bug (Upload 500)', 'Timezone Deadline Bug']
+}
+df = pd.DataFrame(data)
+df['Drop-off Count'] = df['Users Started'] - df['Users Completed']
+df['Drop-off %'] = (df['Drop-off Count'] / df['Users Started']) * 100
 
-df = load_data()
+# Top Summary Metrics
+col1, col2, col3 = st.columns(3)
+col1.metric("Total Applicants Started", "1,000")
+col2.metric("Final Applications Completed", "180", "-82% Overall Drop-off")
+col3.metric("Critical Bottleneck", "Stage 3 (Upload)", "Silent Tech Failure")
 
-# Sidebar Interactive Filters
-st.sidebar.header("Interactive Controls & Filters")
-selected_region = st.sidebar.multiselect("Select Region(s):", options=df["Region"].unique(), default=df["Region"].unique())
-selected_segment = st.sidebar.multiselect("Select Segment(s):", options=df["Customer_Segment"].unique(), default=df["Customer_Segment"].unique())
+st.markdown("---")
 
-filtered_df = df[(df["Region"].isin(selected_region)) & (df["Customer_Segment"].isin(selected_segment))]
+# Main Visuals
+c1, c2 = st.columns([1, 1])
 
-# Section 1: Executive KPI Scorecards
-st.header("1. Executive Performance Metrics")
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-kpi1.metric("Total Revenue", f"${filtered_df['Revenue'].sum():,.2f}")
-kpi2.metric("Total Orders", f"{filtered_df['Orders'].sum():,}")
-kpi3.metric("Average Order Value", f"${filtered_df['Revenue'].sum() / max(filtered_df['Orders'].sum(), 1):,.2f}")
-kpi4.metric("Active Regions", f"{filtered_df['Region'].nunique()}")
+with c1:
+    st.write("### Application Funnel Conversion")
+    fig_funnel = px.funnel(df, x='Users Completed', y='Stage', color='Primary Root Cause')
+    st.plotly_chart(fig_funnel, use_container_width=True)
 
-# Section 2: Visual Storytelling
-st.header("2. Revenue Trend & Segment Distribution")
-col1, col2 = st.columns(2)
+with c2:
+    st.write("### Stage Drop-off & Root Cause Breakdown")
+    fig_bar = px.bar(df, x='Stage', y='Drop-off %', color='Primary Root Cause', text_auto='.1f')
+    st.plotly_chart(fig_bar, use_container_width=True)
 
-with col1:
-    fig_line = px.line(filtered_df.groupby("Date")["Revenue"].sum().reset_index(), x="Date", y="Revenue", title="Daily Revenue Velocity")
-    st.plotly_chart(fig_line, use_container_width=True)
+st.markdown("---")
 
-with col2:
-    fig_pie = px.pie(filtered_df, names="Customer_Segment", values="Revenue", title="Revenue Share by Customer Segment", hole=0.4)
-    st.plotly_chart(fig_pie, use_container_width=True)
+# Executive Action Matrix
+st.write("### 🛠️ Recommended Sprint Action Matrix")
+col_a, col_b, col_c = st.columns(3)
 
-# Section 3: Data Dictionary & Governance
-st.header("3. Metric Dictionary & Lineage Governance")
-dict_df = pd.DataFrame({
-    "Metric Name": ["Revenue", "Orders", "Average Order Value", "Customer Segment"],
-    "Definition": ["Gross monetary value generated", "Count of fulfilled transaction baskets", "Total Revenue divided by Total Orders", "RFM-derived behavioral categorization"],
-    "Source": ["Transactions DB", "Orders Pipeline", "Calculated Aggregation", "Task 17 RFM Model"],
-    "Refresh Rate": ["Real-time / Daily", "Daily Batch", "On-demand", "Monthly Refresh"]
-})
-st.table(dict_df)
+with col_a:
+    st.error("**Priority 1: Fix Technical Pipeline**")
+    st.caption("Stage 3: Document Upload")
+    st.write("• Resolve silently failing 500 API errors on document uploads.\n• **Impact:** Recovers ~480 lost applications instantly.")
+
+with col_b:
+    st.warning("**Priority 2: Fix Timezone Display**")
+    st.caption("Stage 4: Submission Cutoff")
+    st.write("• Align deadline timestamps explicitly to local IST vs. UTC.\n• **Impact:** Prevents early deadline lockout spikes.")
+
+with col_c:
+    st.info("**Priority 3: Copywriting / Trust**")
+    st.caption("Stage 1: Job Description View")
+    st.write("• Verify recruiter authenticity flags and refine JD phrasing.\n• **Impact:** Reduces bounce rate on initial views.")
