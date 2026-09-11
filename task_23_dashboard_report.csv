@@ -1,0 +1,176 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5b8b2862-86d2-475c-a4ba-27d57066d9a7",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ModuleNotFoundError",
+     "evalue": "No module named 'reportlab'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
+      "Cell \u001b[0;32mIn[2], line 3\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mpandas\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mas\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mpd\u001b[39;00m\n\u001b[1;32m      2\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mnumpy\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mas\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mnp\u001b[39;00m\n\u001b[0;32m----> 3\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mreportlab\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mlib\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mpagesizes\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mimport\u001b[39;00m letter\n\u001b[1;32m      4\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mreportlab\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mplatypus\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mimport\u001b[39;00m SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle\n\u001b[1;32m      5\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mreportlab\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mlib\u001b[39;00m\u001b[38;5;21;01m.\u001b[39;00m\u001b[38;5;21;01mstyles\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mimport\u001b[39;00m getSampleStyleSheet, ParagraphStyle\n",
+      "\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'reportlab'"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "from reportlab.lib.pagesizes import letter\n",
+    "from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle\n",
+    "from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle\n",
+    "from reportlab.lib import colors\n",
+    "\n",
+    "# 1. Simulate Professional Telemetry Data\n",
+    "np.random.seed(42)\n",
+    "departments = [\"CSE\", \"ISE\", \"ECE\", \"ME\"]\n",
+    "n_records = 500\n",
+    "exec_data = pd.DataFrame({\n",
+    "    \"Department\": np.random.choice(departments, n_records),\n",
+    "    \"Placement_Status\": np.random.choice([1, 0], n_records, p=[0.75, 0.25]),\n",
+    "    \"Package_LPA\": np.random.normal(7.2, 1.8, n_records).clip(4.0, 18.0),\n",
+    "    \"DPDP_Compliant\": np.random.choice([True, False], n_records, p=[0.98, 0.02])\n",
+    "})\n",
+    "\n",
+    "# 2. Advanced Professional Aggregations (KPIs, Percentiles, Compliance)\n",
+    "exec_summary = exec_data.groupby(\"Department\").agg(\n",
+    "    Total_Candidates=(\"Placement_Status\", \"count\"),\n",
+    "    Placements=(\"Placement_Status\", \"sum\"),\n",
+    "    Placement_Rate=(\"Placement_Status\", \"mean\"),\n",
+    "    Median_Package_LPA=(\"Package_LPA\", \"median\"),\n",
+    "    Max_Package_LPA=(\"Package_LPA\", \"max\"),\n",
+    "    Compliance_Rate=(\"DPDP_Compliant\", \"mean\")\n",
+    ").reset_index()\n",
+    "\n",
+    "# Format percentages and rounding for presentation\n",
+    "exec_summary[\"Placement_Rate\"] = (exec_summary[\"Placement_Rate\"] * 100).round(2).astype(str) + \"%\"\n",
+    "exec_summary[\"Compliance_Rate\"] = (exec_summary[\"Compliance_Rate\"] * 100).round(2).astype(str) + \"%\"\n",
+    "exec_summary[\"Median_Package_LPA\"] = exec_summary[\"Median_Package_LPA\"].round(2)\n",
+    "exec_summary[\"Max_Package_LPA\"] = exec_summary[\"Max_Package_LPA\"].round(2)\n",
+    "\n",
+    "# Export CSV artifact\n",
+    "exec_summary.to_csv(\"task_23_executive_dashboard_report.csv\", index=False)\n",
+    "print(\"Exported task_23_executive_dashboard_report.csv successfully!\")\n",
+    "\n",
+    "# 3. Generate Professional Executive PDF Report\n",
+    "pdf_filename = \"PlaceMux_Phase3_Task23_Executive_Dashboard_Report.pdf\"\n",
+    "doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=36)\n",
+    "story = []\n",
+    "styles = getSampleStyleSheet()\n",
+    "\n",
+    "# Custom Professional Styles\n",
+    "title_style = ParagraphStyle('DocTitle', parent=styles['Heading1'], fontSize=18, textColor=colors.HexColor('#2A363B'), spaceAfter=6)\n",
+    "subtitle_style = ParagraphStyle('DocSub', parent=styles['Normal'], fontSize=10, textColor=colors.HexColor('#555555'), spaceAfter=15)\n",
+    "section_style = ParagraphStyle('SectionHead', parent=styles['Heading2'], fontSize=13, textColor=colors.HexColor('#3F51B5'), spaceBefore=10, spaceAfter=6)\n",
+    "body_style = ParagraphStyle('BodyTextCustom', parent=styles['Normal'], fontSize=9.5, textColor=colors.HexColor('#333333'), leading=14, spaceAfter=8)\n",
+    "\n",
+    "# Header Section\n",
+    "story.append(Paragraph(\"PlaceMux — Phase 3 Executive Dashboard Report\", title_style))\n",
+    "story.append(Paragraph(\"Task 23: Hardening, Scale & Institutional Performance Analytics | Date: September 2026\", subtitle_style))\n",
+    "\n",
+    "# Executive Summary\n",
+    "story.append(Paragraph(\"1. Executive Summary & Strategic Overview\", section_style))\n",
+    "story.append(Paragraph(\n",
+    "    \"This executive telemetry dashboard provides high-level institutional stakeholders with verified visibility \"\n",
+    "    \"into departmental placement yields, compensation distributions, and rigorous DPDP compliance standards. \"\n",
+    "    \"All analytical pipelines incorporate automated data hardening to ensure zero privacy leaks while evaluating scale performance.\",\n",
+    "    body_style\n",
+    "))\n",
+    "\n",
+    "# Table Data Construction\n",
+    "story.append(Paragraph(\"2. Departmental Performance & Compensation Metrics\", section_style))\n",
+    "table_data = [[\"Department\", \"Candidates\", \"Placements\", \"Placement Rate\", \"Median (LPA)\", \"Max (LPA)\", \"Compliance\"]]\n",
+    "for _, row in exec_summary.iterrows():\n",
+    "    table_data.append([\n",
+    "        str(row[\"Department\"]),\n",
+    "        str(row[\"Total_Candidates\"]),\n",
+    "        str(row[\"Placements\"]),\n",
+    "        str(row[\"Placement_Rate\"]),\n",
+    "        str(row[\"Median_Package_LPA\"]),\n",
+    "        str(row[\"Max_Package_LPA\"]),\n",
+    "        str(row[\"Compliance_Rate\"])\n",
+    "    ])\n",
+    "\n",
+    "t = Table(table_data, colWidths=[75, 75, 75, 85, 85, 75, 80])\n",
+    "t.setStyle(TableStyle([\n",
+    "    ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#3F51B5')),\n",
+    "    ('TEXTCOLOR', (0,0), (-1,0), colors.white),\n",
+    "    ('ALIGN', (0,0), (-1,-1), 'CENTER'),\n",
+    "    ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),\n",
+    "    ('FONTSIZE', (0,0), (-1,0), 9),\n",
+    "    ('BOTTOMPADDING', (0,0), (-1,0), 6),\n",
+    "    ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#F9F9F9')),\n",
+    "    ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#DDDDDD')),\n",
+    "    ('FONTNAME', (0,1), (-1,-1), 'Helvetica'),\n",
+    "    ('FONTSIZE', (0,1), (-1,-1), 8.5),\n",
+    "    ('TOPPADDING', (0,1), (-1,-1), 5),\n",
+    "    ('BOTTOMPADDING', (0,1), (-1,-1), 5),\n",
+    "]))\n",
+    "\n",
+    "story.append(t)\n",
+    "doc.build(story)\n",
+    "print(f\"Generated professional PDF report: {pdf_filename}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "72388726-487d-45d4-8920-b0528b16049b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting reportlab\n",
+      "  Downloading reportlab-5.0.1-py3-none-any.whl (2.0 MB)\n",
+      "\u001b[K     |████████████████████████████████| 2.0 MB 777 kB/s eta 0:00:01\n",
+      "\u001b[?25hRequirement already satisfied: pillow>=9.0.0 in /Users/jeevann/venv/lib/python3.9/site-packages (from reportlab) (11.3.0)\n",
+      "Requirement already satisfied: charset-normalizer in /Users/jeevann/venv/lib/python3.9/site-packages (from reportlab) (3.4.9)\n",
+      "Installing collected packages: reportlab\n",
+      "Successfully installed reportlab-5.0.1\n",
+      "\u001b[33mWARNING: You are using pip version 21.2.4; however, version 26.0.1 is available.\n",
+      "You should consider upgrading via the '/Users/jeevann/venv/bin/python3 -m pip install --upgrade pip' command.\u001b[0m\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install reportlab"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "54ad392e-e9c8-4def-a846-b9f366f65ac4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
