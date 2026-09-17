@@ -1,0 +1,92 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "5f20e318-896d-4d38-aad7-ac5b72137237",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  Department  Total_Requests  Mean_Latency_ms  Max_Latency_ms  \\\n",
+      "0        CSE           17201            46.51           72.45   \n",
+      "1        ECE           16371            46.23           81.24   \n",
+      "2        ISE           17388            46.09           77.04   \n",
+      "3         ME           21250            45.23           84.39   \n",
+      "\n",
+      "  Avg_Success_Rate Compliance_Status  \n",
+      "0           78.16%   VERIFIED_SECURE  \n",
+      "1           78.68%   VERIFIED_SECURE  \n",
+      "2            79.0%   VERIFIED_SECURE  \n",
+      "3            78.4%   VERIFIED_SECURE  \n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "# Simulate Real-Time Go-Live Monitoring Telemetry\n",
+    "np.random.seed(101)\n",
+    "departments = [\"CSE\", \"ISE\", \"ECE\", \"ME\"]\n",
+    "n_records = 600\n",
+    "\n",
+    "go_live_data = pd.DataFrame({\n",
+    "    \"Timestamp\": pd.date_range(start=\"2026-09-13 09:00:00\", periods=n_records, freq=\"min\"),\n",
+    "    \"Department\": np.random.choice(departments, n_records),\n",
+    "    \"Active_Connections\": np.random.poisson(120, n_records),\n",
+    "    \"Query_Latency_ms\": np.random.normal(45.5, 12.0, n_records).clip(15.0, 120.0),\n",
+    "    \"Placement_Success_Rate\": np.random.uniform(0.72, 0.85, n_records),\n",
+    "    \"DPDP_Compliance_Status\": \"VERIFIED_SECURE\"\n",
+    "})\n",
+    "\n",
+    "# Aggregate Go-Live Monitoring KPIs\n",
+    "monitoring_summary = go_live_data.groupby(\"Department\").agg(\n",
+    "    Total_Requests=(\"Active_Connections\", \"sum\"),\n",
+    "    Mean_Latency_ms=(\"Query_Latency_ms\", \"mean\"),\n",
+    "    Max_Latency_ms=(\"Query_Latency_ms\", \"max\"),\n",
+    "    Avg_Success_Rate=(\"Placement_Success_Rate\", \"mean\"),\n",
+    "    Compliance_Status=(\"DPDP_Compliance_Status\", \"first\")\n",
+    ").reset_index()\n",
+    "\n",
+    "monitoring_summary[\"Mean_Latency_ms\"] = monitoring_summary[\"Mean_Latency_ms\"].round(2)\n",
+    "monitoring_summary[\"Max_Latency_ms\"] = monitoring_summary[\"Max_Latency_ms\"].round(2)\n",
+    "monitoring_summary[\"Avg_Success_Rate\"] = (monitoring_summary[\"Avg_Success_Rate\"] * 100).round(2).astype(str) + \"%\"\n",
+    "\n",
+    "print(monitoring_summary)\n",
+    "monitoring_summary.to_csv(\"task_25_go_live_monitoring.csv\", index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4234bed0-04f4-4f76-a22b-e0467ebceb8c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

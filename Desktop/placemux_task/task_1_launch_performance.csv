@@ -1,0 +1,6 @@
+Funnel_Stage,User_Count,Conversion_Rate,Drop_Off_Rate
+1. Impressions / Visits,50000,100.0%,0.0%
+2. Profile Signups,12500,25.0%,75.0%
+3. Matching / Applications,4500,36.0%,64.0%
+4. Shortlisted / Interviews,1800,40.0%,60.0%
+5. Final Placements,750,41.67%,58.33%

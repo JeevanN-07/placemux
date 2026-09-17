@@ -1,0 +1,5 @@
+Backlog_ID,Initiative,Target_Metric,Decision_Trigger
+BL-01,Streamlined Onboarding A/B Test,Signup Conversion Rate (+15%),Reduces Stage 1-2 drop-off; unblocks top-of-funnel flow
+BL-02,Query Optimization & Indexing,P95 Query Latency (<50ms),Eliminates timeout failures during peak recruitment windows
+BL-03,Automated Credential Verification,Verification Processing Time (-50%),Removes operational bottlenecks for candidate onboarding
+BL-04,Departmental Equity Re-weighting,Yield Variance (<3%),Ensures equitable placement distribution across branches

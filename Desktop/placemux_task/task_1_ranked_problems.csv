@@ -1,0 +1,5 @@
+Rank,Problem_Statement,Impact_Score,Root_Cause_Evidence
+1,High drop-off at Profile Signup stage due to lengthy onboarding friction,Critical (High Revenue/Retention Loss),75% drop between visits and signups; form abandonment telemetry
+2,Latency spikes (>120ms) during peak application submission hours,High (User Experience Degradation),Database query timeouts under 200+ concurrent requests
+3,Verification pipeline bottlenecks in academic credential checks,Moderate (Operational Delay),Manual intervention rates at 14% for credential verification
+4,Uneven departmental placement yield variance across technical branches,Moderate (Departmental Disparity),CSE/ECE placement yield at ~76% vs ME/ISE at ~73%
